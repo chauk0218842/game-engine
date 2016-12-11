@@ -8,15 +8,24 @@ module.exports = {
     filename: 'main.bundle.js'
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loader: 'eslint',
+        exclude: /node_modules/
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015']
-        }
-      }
+        loader: 'babel',
+        exclude: /node_modules/
+      },
     ]
+  },
+  eslint: {
+    failOnWarning: false,
+    failOnError: true
   },
   watch: true,
   stats: {
