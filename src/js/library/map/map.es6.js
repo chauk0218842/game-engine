@@ -1,24 +1,28 @@
 import $ from 'jquery';
 import _ from 'lodash';
 
-const renderTile = (id, bgColor = '#CCC', width = '10') =>
+const TILE_BORDER_CSS = '1px solid #BBB';
+const TILE_BACKGROUND_COLOR = '#DDD';
+const TILE_WIDTH = 10;
+
+const renderTile = (id, bgColor = TILE_BACKGROUND_COLOR, width = TILE_WIDTH) =>
   $('<div>')
-    .attr('renderTile-', id)
-    .addClass('renderTile')
+    .attr('tile-', id)
+    .addClass('tile')
     .css('background', bgColor)
     .css('width', `${width}px`)
     .css('height', `${width}px`)
     .css('float', 'left')
-    .css('borderLeft', '1px solid #888')
-    .css('borderTop', '1px solid #888')
+    .css('borderLeft', TILE_BORDER_CSS)
+    .css('borderTop', TILE_BORDER_CSS)
     .on('click', () => console.log('Tile clicked', id));
 
-export const renderMap = (rows, cols, renderTileWidth = '10') => {
+export const renderMap = (rows, cols, renderTileWidth = TILE_WIDTH) => {
   const $map = $('<div />')
     .css('width', `${cols + (cols * renderTileWidth)}px`)
     .css('height', `${rows + (rows * renderTileWidth)}px`)
-    .css('borderRight', '1px solid #888')
-    .css('borderBottom', '1px solid #888');
+    .css('borderRight', TILE_BORDER_CSS)
+    .css('borderBottom', TILE_BORDER_CSS);
 
   return _.chain(new Array(rows * cols))
     .reduce(
