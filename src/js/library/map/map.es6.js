@@ -1,22 +1,22 @@
 import $ from 'jquery';
 import _ from 'lodash';
 
-const tile = (id, bgColor = '#CCC', width = '10') =>
+const renderTile = (id, bgColor = '#CCC', width = '10') =>
   $('<div>')
-    .attr('tile-', id)
-    .addClass('tile')
+    .attr('renderTile-', id)
+    .addClass('renderTile')
     .css('background', bgColor)
     .css('width', `${width}px`)
     .css('height', `${width}px`)
     .css('float', 'left')
     .css('borderLeft', '1px solid #888')
     .css('borderTop', '1px solid #888')
-    .on('click', () => console.log('clicked', id));
+    .on('click', () => console.log('Tile clicked', id));
 
-const renderMap = (rows, cols, tileWidth = '10') => {
+export const renderMap = (rows, cols, renderTileWidth = '10') => {
   const $map = $('<div />')
-    .css('width', `${cols + (cols * tileWidth)}px`)
-    .css('height', `${rows + (rows * tileWidth)}px`)
+    .css('width', `${cols + (cols * renderTileWidth)}px`)
+    .css('height', `${rows + (rows * renderTileWidth)}px`)
     .css('borderRight', '1px solid #888')
     .css('borderBottom', '1px solid #888');
 
@@ -26,7 +26,7 @@ const renderMap = (rows, cols, tileWidth = '10') => {
         const row = parseInt(index / cols, 10);
         const col = index % cols;
         const id = `${row}_${col}`;
-        return $container.append(tile(id));
+        return $container.append(renderTile(id));
       },
       $map)
     .value();

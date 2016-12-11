@@ -1,4 +1,4 @@
 import $ from 'jquery';
-import renderMap from './library/map.es6';
+import * as map from './library/map/map.es6';
 
-$('#world').append(renderMap(10, 10));
+$('#world').append(map.renderMap(10, 10));
