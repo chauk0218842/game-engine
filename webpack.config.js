@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './js/main.es6.js',
+  entry: './src/js/main.es6.js',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'main.bundle.js'

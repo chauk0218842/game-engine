@@ -6,5 +6,8 @@
   "extends": "airbnb-base",
   "plugins": [
     "import"
-  ]
+  ],
+  "rules": {
+    "no-debugger": "warn"
+  }
 }
