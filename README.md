@@ -1,5 +1,12 @@
 #README
 
+##### Installation + Execution
+- To install via CLI: `npm install`
+- To execute via CLI: `npm start`
+  - Dynamic change via webpack visit `http://localhost:8080/webpack-dev-server/`
+  - Or visit `http://localhost:8080`
+
+---
 ##### 2016-12-11
 - Initial commit: project scaffolding (setting up git; webpack; babel etc. etc.)
 - This is my attempt to creating a game engine in JS
@@ -10,5 +17,3 @@
   - Redux will be useful to manage the game engine's state aka "animation state"
 - Each day, I plan on doing at least 15 minutes of coding to get this project up and running eventually
 - Hopefully, this will come to fruitation and be published publicly
-
----
