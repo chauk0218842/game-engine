@@ -6,8 +6,10 @@ import * as map from './library/map/map.es6';
 import * as sprite from './library/sprite/sprite.es6';
 import * as keyboard from './library/keyboard/keyboard.es6';
 
-const worldId = 'world';
-const playerSpriteId = 'sprite-player';
+const ELEM_ID = {
+  WORLD: 'world',
+  PLAYER_SPRITE: 'sprite-player',
+};
 
 /**
  * Map constants
@@ -16,8 +18,8 @@ const playerSpriteId = 'sprite-player';
 const mapBoundary = {
   top: 0,
   left: 0,
-  right: (10 * 10) + 10,
-  bottom: (10 * 10) + 10,
+  right: (10 * (10 - 1)) + (10 - 1),
+  bottom: (10 * (10 - 1)) + (10 - 1),
 };
 
 /**
@@ -30,7 +32,7 @@ const $map = map.renderMap(10, 10)
 /**
  * Player sprite component
  */
-const $sprite = sprite.renderSprite(playerSpriteId)
+const $sprite = sprite.renderSprite(ELEM_ID.PLAYER_SPRITE)
   .css('position', 'absolute')
   .css('zIndex', 1)
   .css('left', '0px');
@@ -39,16 +41,12 @@ const $sprite = sprite.renderSprite(playerSpriteId)
  * World component
  * @type {*}
  */
-const $world = $(`#${worldId}`);
+const $world = $(`#${ELEM_ID.WORLD}`);
 
 $world.css('position', 'relative')
   .append($map)
   .append($sprite);
 
-$(document).on('keydown', (evt) => {
-  if (_.isNil($(`#${playerSpriteId}`))) {
-    return null;
-  }
-  return keyboard.keyboardControls[evt.which] &&
-    keyboard.keyboardControls[evt.which](playerSpriteId, mapBoundary);
-});
+$(document).on('keydown', evt => !_.isNil($(`#${ELEM_ID.PLAYER_SPRITE}`)) &&
+keyboard.keyboardControls[evt.which] &&
+keyboard.keyboardControls[evt.which](ELEM_ID.PLAYER_SPRITE, mapBoundary));

@@ -11,32 +11,26 @@ export const keyboardControls = {};
 
 keyboardControls[KEYS.LEFT_ARROW] = (elemId, boundary) => {
   const $player = $(`#${elemId}`);
-  let pos = ($player.position().left || 0) - 11;
-  pos = pos < boundary.left ? boundary.left : pos;
-  $player.css('left', `${pos}px`);
+  const pos = ($player.position().left || 0) - 11;
+  $player.css('left', `${(boundary.left - pos) > 0 ? boundary.left : pos}px`);
 };
 
 keyboardControls[KEYS.UP_ARROW] = (elemId, boundary) => {
   const $player = $(`#${elemId}`);
-  let pos = ($player.position().top || 0) - 11;
-  pos = pos < boundary.top ? boundary.top : pos;
-  $player.css('top', `${pos}px`);
+  const pos = ($player.position().top || 0) - 11;
+  $player.css('top', `${(boundary.top - pos) > 0 ? boundary.top : pos}px`);
 };
 
 keyboardControls[KEYS.RIGHT_ARROW] = (elemId, boundary) => {
   const $player = $(`#${elemId}`);
-  const curPos = $player.position().left;
-  let pos = (curPos || 0) + 11;
-  pos = pos >= boundary.right ? curPos : pos;
-  $player.css('left', `${pos}px`);
+  const pos = ($player.position().left || 0) + 11;
+  $player.css('left', `${(boundary.right - pos) < 0 ? boundary.right : pos}px`);
 };
 
 keyboardControls[KEYS.DOWN_ARROW] = (elemId, boundary) => {
   const $player = $(`#${elemId}`);
-  const curPos = $player.position().top;
-  let pos = (curPos || 0) + 11;
-  pos = pos >= boundary.bottom ? curPos : pos;
-  $player.css('top', `${pos}px`);
+  const pos = ($player.position().top || 0) + 11;
+  $player.css('top', `${(boundary.bottom - pos) < 0 ? boundary.bottom : pos}px`);
 };
 
 export default keyboardControls;
