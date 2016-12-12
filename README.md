@@ -1,7 +1,6 @@
 #README
 
-
-##### 2016-12-01
+##### 2016-12-11
 - Initial commit: project scaffolding (setting up git; webpack; babel etc. etc.)
 - This is my attempt to creating a game engine in JS
 - My initial prototype is going to write this in jQuery
